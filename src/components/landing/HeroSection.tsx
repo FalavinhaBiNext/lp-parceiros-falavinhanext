@@ -1,0 +1,92 @@
+import { motion } from "framer-motion";
+import PartnerForm from "./PartnerForm";
+
+const HeroSection = () => {
+  return (
+    <section className="relative min-h-screen pt-24 pb-16 overflow-hidden" style={{ background: 'var(--gradient-hero)' }}>
+      {/* Background decorations */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl animate-float" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl" />
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center min-h-[calc(100vh-6rem)]">
+          {/* Left Content */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="space-y-8"
+          >
+            <div className="space-y-6">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20"
+              >
+                <span className="w-2 h-2 rounded-full bg-primary animate-pulse-soft" />
+                <span className="text-sm font-medium text-primary">Programa de Parceiros</span>
+              </motion.div>
+
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-foreground text-balance">
+                Seja um Parceiro{" "}
+                <span className="gradient-text">Falavinha Next</span>
+              </h1>
+
+              <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed">
+                Amplie sua receita oferecendo soluções de recuperação tributária aos seus clientes — sem aumentar sua operação.
+              </p>
+
+              <p className="text-base text-muted-foreground">
+                Preencha o formulário ao lado e aguarde o contato de um dos nossos especialistas.
+              </p>
+            </div>
+
+            {/* Trust indicators */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+              className="flex flex-wrap gap-6 pt-4"
+            >
+              <div className="flex items-center gap-2 text-muted-foreground">
+                <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span className="text-sm">Sem custos iniciais</span>
+              </div>
+              <div className="flex items-center gap-2 text-muted-foreground">
+                <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span className="text-sm">Suporte completo</span>
+              </div>
+              <div className="flex items-center gap-2 text-muted-foreground">
+                <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span className="text-sm">Comissões atrativas</span>
+              </div>
+            </motion.div>
+          </motion.div>
+
+          {/* Right Form */}
+          <motion.div
+            id="hero-form"
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="w-full"
+          >
+            <PartnerForm />
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default HeroSection;
