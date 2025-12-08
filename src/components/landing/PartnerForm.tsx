@@ -3,34 +3,92 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ArrowRight, Loader2 } from "lucide-react";
+import { ArrowRight, Building2Icon, DollarSignIcon, Loader2, MailIcon, Package2Icon, PackageCheckIcon, PackageMinusIcon, PackageOpenIcon, PhoneIcon, User2Icon } from "lucide-react";
+import InputMask from "react-input-mask";
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import TagManager from 'react-gtm-module';
 
 const PartnerForm = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
-    name: "",
+    nome: "",
     email: "",
-    phone: "",
-    company: "",
-    revenue: "",
-    segment: "",
+    telefone: "",
+    empresa: "",
+    faturamento: "",
+    segmento: "",
+    utm_source: "",
+    utm_medium: "",
+    utm_campaign: "",
+    utm_content: "",
+    utm_term: "",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const gotToAgradecimento = () => {
+    navigate("/obrigado");
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    
-    setIsLoading(false);
-    navigate("/obrigado");
+    try {
+      const newData = {
+        ...formData,
+        origem: 'LP Parceria Falavinha Next',
+        utm_source: new URLSearchParams(window.location.search).get('utm_source') || 'Não Informado',
+        utm_medium: new URLSearchParams(window.location.search).get('utm_medium') || 'Não Informado',
+        utm_campaign: new URLSearchParams(window.location.search).get('utm_campaign') || 'Não Informado',
+        utm_content: new URLSearchParams(window.location.search).get('utm_content') || 'Não Informado',
+        utm_term: new URLSearchParams(window.location.search).get('utm_term') || 'Não Informado',
+      };
+
+      const apiFalavinhaProducao = 'https://api.falavinha.com.br/api/v1/leads/create';
+      const webhookProducao = 'https://falavinha.app.n8n.cloud/webhook/tributario';
+
+      const response = await axios.post('https://tributario.falavinhanext.com.br/api/api/v1/leads/create', newData);
+      console.log(response, "RESPONSE");
+      
+      // await axios.post(webhookProducao, newData, {
+      //   headers: {
+      //     "Content-Type": "multipart/form-data",
+      //   },
+      // });
+
+      toast.success("Cadastro realizado com sucesso!");
+      setFormData({
+        nome: "",
+        email: "",
+        telefone: "",
+        empresa: "",
+        faturamento: "",
+        segmento: "",
+        utm_source: "",
+        utm_medium: "",
+        utm_campaign: "",
+        utm_content: "",
+        utm_term: "",
+      });
+
+      TagManager.dataLayer({
+        dataLayer: { event: "Formulario_submitido", form_name: "Formulario" },
+      });
+      gotToAgradecimento();
+    }
+    catch(error) {
+      toast.error("Ocorreu um erro ao cadastrar. Por favor, tente novamente.");
+    }
+    finally {
+      setIsLoading(false);
+    }
   };
+
+  console.log("FORMDATA", formData);
 
   return (
     <motion.div
@@ -46,15 +104,16 @@ const PartnerForm = () => {
 
       <form onSubmit={handleSubmit} className="space-y-5">
         <div className="space-y-2">
-          <label htmlFor="name" className="text-sm font-medium text-foreground">
+          <label htmlFor="name" className="flex items-center gap-2 text-sm font-medium text-foreground">
+            <User2Icon className="w-5 h-5" />
             Nome completo
           </label>
           <Input
-            id="name"
-            name="name"
+            id="nome"
+            name="nome"
             type="text"
             placeholder="Seu nome"
-            value={formData.name}
+            value={formData.nome}
             onChange={handleChange}
             required
           />
@@ -62,7 +121,8 @@ const PartnerForm = () => {
 
         <div className="grid md:grid-cols-2 gap-5">
           <div className="space-y-2">
-            <label htmlFor="email" className="text-sm font-medium text-foreground">
+            <label htmlFor="email" className="flex items-center gap-2 text-sm font-medium text-foreground">
+              <MailIcon className="w-5 h-5" />
               E-mail
             </label>
             <Input
@@ -77,15 +137,17 @@ const PartnerForm = () => {
           </div>
 
           <div className="space-y-2">
-            <label htmlFor="phone" className="text-sm font-medium text-foreground">
+            <label htmlFor="telefone" className="flex items-center gap-2 text-sm font-medium text-foreground">
+              <PhoneIcon className="w-5 h-5" />
               Telefone
             </label>
-            <Input
-              id="phone"
-              name="phone"
-              type="tel"
+            <InputMask
+              id="telefone"
+              className="flex h-12 w-full rounded-xl border border-input bg-card px-4 py-3 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:border-primary/50 transition-all duration-200 shadow-soft hover:border-primary/30 appearance-none"
+              name="telefone"
+              mask="(99) 99999-9999"
               placeholder="(00) 00000-0000"
-              value={formData.phone}
+              value={formData.telefone}
               onChange={handleChange}
               required
             />
@@ -93,15 +155,16 @@ const PartnerForm = () => {
         </div>
 
         <div className="space-y-2">
-          <label htmlFor="company" className="text-sm font-medium text-foreground">
+          <label htmlFor="company" className="flex items-center gap-2 text-sm font-medium text-foreground">
+            <Building2Icon className="w-5 h-5" />
             Nome da Empresa
           </label>
           <Input
-            id="company"
-            name="company"
+            id="empresa"
+            name="empresa"
             type="text"
             placeholder="Sua empresa"
-            value={formData.company}
+            value={formData.empresa}
             onChange={handleChange}
             required
           />
@@ -109,13 +172,14 @@ const PartnerForm = () => {
 
         <div className="grid md:grid-cols-2 gap-5">
           <div className="space-y-2">
-            <label htmlFor="revenue" className="text-sm font-medium text-foreground">
+            <label htmlFor="revenue" className="flex items-center gap-2 text-sm font-medium text-foreground">
+              <DollarSignIcon className="w-5 h-5" />
               Faturamento Anual
             </label>
             <select
-              id="revenue"
-              name="revenue"
-              value={formData.revenue}
+              id="faturamento"
+              name="faturamento"
+              value={formData.faturamento}
               onChange={handleChange}
               required
               className="flex h-12 w-full rounded-xl border border-input bg-card px-4 py-3 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:border-primary/50 transition-all duration-200 shadow-soft hover:border-primary/30 appearance-none cursor-pointer"
@@ -130,13 +194,14 @@ const PartnerForm = () => {
           </div>
 
           <div className="space-y-2">
-            <label htmlFor="segment" className="text-sm font-medium text-foreground">
+            <label htmlFor="segment" className="flex items-center gap-2 text-sm font-medium text-foreground">
+              <PackageCheckIcon className="w-5 h-5" />
               Segmento
             </label>
             <select
-              id="segment"
-              name="segment"
-              value={formData.segment}
+              id="segmento"
+              name="segmento"
+              value={formData.segmento}
               onChange={handleChange}
               required
               className="flex h-12 w-full rounded-xl border border-input bg-card px-4 py-3 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/30 focus-visible:border-primary/50 transition-all duration-200 shadow-soft hover:border-primary/30 appearance-none cursor-pointer"

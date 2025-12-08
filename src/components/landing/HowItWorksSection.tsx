@@ -42,7 +42,8 @@ const HowItWorksSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-300/20 border border-[#155d6040] text-gray-500 text-sm font-medium mb-6">
+            <span className="w-2 h-2 rounded-full bg-gray-500 animate-pulse-soft" />
             Processo
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
@@ -62,12 +63,15 @@ const HowItWorksSection = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: index * 0.15 }}
-                className={`relative flex flex-col md:flex-row items-start gap-6 md:gap-12 ${
-                  index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                }`}
+                className={`relative flex flex-col items-center text-center 
+            md:flex-row md:text-left 
+            md:items-start gap-6 md:gap-12
+            ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}
               >
                 {/* Content */}
-                <div className={`flex-1 ${index % 2 === 0 ? "md:text-right" : "md:text-left"}`}>
+                <div className={`flex-1 w-full 
+                 ${index % 2 === 0 ? "md:text-right" : "md:text-left"}`}>
+
                   <div className="glass-card rounded-2xl p-6 md:p-8 transition-all duration-300 hover:shadow-glow hover:border-primary/30">
                     <h3 className="text-xl font-semibold text-foreground mb-3">{step.title}</h3>
                     <p className="text-muted-foreground leading-relaxed">{step.description}</p>
@@ -75,11 +79,15 @@ const HowItWorksSection = () => {
                 </div>
 
                 {/* Number circle */}
-                <div className="absolute left-0 md:left-1/2 md:-translate-x-1/2 flex-shrink-0">
-                  <div className="w-16 h-16 rounded-full gradient-bg flex items-center justify-center shadow-medium">
+                <div
+                  className=" flex-shrink-0 flex justify-center -mt-6 mb-2 relative md:absolute md:left-1/2 md:-translate-x-1/2 md:mt-0 md:mb-0"
+                >
+                  <div className="w-14 h-14 md:w-16 md:h-16 rounded-full gradient-bg flex items-center justify-center shadow-medium">
                     <span className="text-lg font-bold text-primary-foreground">{step.number}</span>
                   </div>
                 </div>
+
+
 
                 {/* Spacer for alternating layout */}
                 <div className="flex-1 hidden md:block" />

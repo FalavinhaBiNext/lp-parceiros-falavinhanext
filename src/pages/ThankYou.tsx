@@ -2,8 +2,29 @@ import { motion } from "framer-motion";
 import { CheckCircle2, ArrowLeft, Mail, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import TagManager from "react-gtm-module";
+
+
+declare const fbq: (...args: any[]) => void;
 
 const ThankYou = () => {
+
+  useEffect(() => {
+    // Evento do Google Tag Manager
+    TagManager.dataLayer({
+      dataLayer: {
+        event: "page_view",
+        page: "/agradecimento",
+      },
+    });
+
+    // Evento do Facebook Pixel
+    if (typeof fbq === "function") {
+      fbq("track", "LP Parceria Falavinha Next");
+    }
+  }, []);
+
   return (
     <div className="min-h-screen flex items-center justify-center p-6" style={{ background: 'var(--gradient-hero)' }}>
       {/* Background decorations */}

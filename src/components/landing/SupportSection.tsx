@@ -38,7 +38,8 @@ const SupportSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-300/20 border border-[#155d6040] text-gray-500 text-sm font-medium mb-6">
+            <span className="w-2 h-2 rounded-full bg-gray-500 animate-pulse-soft" />
             Compromisso
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">

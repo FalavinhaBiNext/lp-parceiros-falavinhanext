@@ -31,7 +31,7 @@ const CTASection = () => {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-300/20 border border-[#155d6040] text-gray-500"
               >
                 <Sparkles className="w-4 h-4" />
                 <span className="text-sm font-medium">Comece agora</span>

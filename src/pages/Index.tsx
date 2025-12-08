@@ -6,8 +6,10 @@ import SupportSection from "@/components/landing/SupportSection";
 import HowItWorksSection from "@/components/landing/HowItWorksSection";
 import CTASection from "@/components/landing/CTASection";
 import Footer from "@/components/landing/Footer";
+import usePageTracking from "@/hooks/usePageTracking";
 
 const Index = () => {
+
   return (
     <div className="min-h-screen bg-background">
       <Header />

@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import ThankYou from "./pages/ThankYou";
 import NotFound from "./pages/NotFound";
+import usePageTracking from "./hooks/usePageTracking";
 
 const queryClient = new QueryClient();
 
@@ -15,6 +16,8 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <PageTracker />
+
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/obrigado" element={<ThankYou />} />
@@ -24,5 +27,10 @@ const App = () => (
     </TooltipProvider>
   </QueryClientProvider>
 );
+
+const PageTracker = () => {
+  usePageTracking();
+  return null; // Não renderiza nada, apenas executa o hook
+};
 
 export default App;
