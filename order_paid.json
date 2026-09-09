@@ -1,0 +1,172 @@
+{
+  "id": "hook_0A69mBElukFajKvy",
+  "account": {
+    "id": "acc_8YrAQEEfOBIo5AV2",
+    "name": "FALEZAP - test"
+  },
+  "type": "order.paid",
+  "created_at": "2026-05-08T18:13:09.1981029Z",
+  "data": {
+    "amount": 29700,
+    "charges": [
+      {
+        "amount": 29700,
+        "code": "pl_bEdO4JKX8YW2ENUo3FyywzegL5GkjmQ3",
+        "created_at": "2026-05-08T18:12:58",
+        "currency": "BRL",
+        "customer": {
+          "address": {
+            "city": "Campo Largo",
+            "country": "BR",
+            "created_at": "2026-05-08T18:12:13",
+            "id": "addr_XDmpg86URDfm81rK",
+            "line_1": "123, Rua Professor João Batista Valões, Vila Santa Terezinha",
+            "neighborhood": "Vila Santa Terezinha",
+            "number": "123",
+            "state": "PR",
+            "status": "active",
+            "street": "Rua Professor João Batista Valões",
+            "updated_at": "2026-05-08T18:12:13",
+            "zip_code": "83602390"
+          },
+          "created_at": "2026-05-08T18:11:31",
+          "delinquent": false,
+          "document": "07552766042",
+          "document_type": "cpf",
+          "email": "gui@teste.com",
+          "id": "cus_BXWqlygUeh9ba0M1",
+          "name": "Guilherme Oliveira",
+          "phones": {
+            "mobile_phone": {
+              "area_code": "41",
+              "country_code": "55",
+              "number": "789654133"
+            }
+          },
+          "type": "individual",
+          "updated_at": "2026-05-08T18:12:13"
+        },
+        "id": "ch_BbMkqvDCowUXENDV",
+        "last_transaction": {
+          "acquirer_auth_code": "454",
+          "acquirer_message": "Transação capturada com sucesso",
+          "acquirer_name": "simulator",
+          "acquirer_nsu": "8427",
+          "acquirer_return_code": "00",
+          "acquirer_tid": "391833110",
+          "amount": 29700,
+          "antifraud_response": {},
+          "card": {
+            "billing_address": {
+              "city": "Campo Largo",
+              "country": "BR",
+              "line_1": "123, Rua Professor João Batista Valões, Vila Santa Terezinha",
+              "state": "PR",
+              "zip_code": "83602390"
+            },
+            "brand": "Visa",
+            "created_at": "2026-05-08T18:12:58",
+            "exp_month": 12,
+            "exp_year": 2030,
+            "first_six_digits": "400000",
+            "holder_name": "CARTAO TESTE",
+            "id": "card_2mbax90Ub2SgLk5J",
+            "last_four_digits": "0010",
+            "status": "active",
+            "type": "credit",
+            "updated_at": "2026-05-08T18:12:58"
+          },
+          "created_at": "2026-05-08T18:12:58",
+          "entry_mode": "ecommerce",
+          "gateway_id": "4323a3e0-bacb-484d-90a5-9d334bc0f8f9",
+          "gateway_response": {
+            "code": "200"
+          },
+          "id": "tran_2jVJPjdtv0id3RlK",
+          "installments": 1,
+          "metadata": {},
+          "operation_key": "892374523",
+          "operation_type": "auth_and_capture",
+          "payment_type": "PAN",
+          "statement_descriptor": "BOTNEXT",
+          "status": "captured",
+          "success": true,
+          "transaction_type": "credit_card",
+          "updated_at": "2026-05-08T18:12:58"
+        },
+        "metadata": {
+          "payment_link_id": "pl_bEdO4JKX8YW2ENUo3FyywzegL5GkjmQ3",
+          "session_id": "session_Emg0dNornlZ5LwbFaTK198BjRx7QDK2W"
+        },
+        "paid_amount": 29700,
+        "paid_at": "2026-05-08T18:12:59",
+        "payment_method": "credit_card",
+        "status": "paid",
+        "updated_at": "2026-05-08T18:12:59"
+      }
+    ],
+    "checkouts": [],
+    "closed": true,
+    "closed_at": "2026-05-08T18:12:58",
+    "code": "pl_bEdO4JKX8YW2ENUo3FyywzegL5GkjmQ3",
+    "created_at": "2026-05-08T18:12:58",
+    "currency": "BRL",
+    "customer": {
+      "address": {
+        "city": "Campo Largo",
+        "country": "BR",
+        "created_at": "2026-05-08T18:12:13",
+        "id": "addr_XDmpg86URDfm81rK",
+        "line_1": "123, Rua Professor João Batista Valões, Vila Santa Terezinha",
+        "neighborhood": "Vila Santa Terezinha",
+        "number": "123",
+        "state": "PR",
+        "status": "active",
+        "street": "Rua Professor João Batista Valões",
+        "updated_at": "2026-05-08T18:12:13",
+        "zip_code": "83602390"
+      },
+      "created_at": "2026-05-08T18:11:31",
+      "delinquent": false,
+      "document": "07552766042",
+      "document_type": "cpf",
+      "email": "gui@teste.com",
+      "id": "cus_BXWqlygUeh9ba0M1",
+      "name": "Guilherme Oliveira",
+      "phones": {
+        "mobile_phone": {
+          "area_code": "41",
+          "country_code": "55",
+          "number": "789654133"
+        }
+      },
+      "type": "individual",
+      "updated_at": "2026-05-08T18:12:13"
+    },
+    "id": "or_l6xzDv9Twyt7DJdy",
+    "integration": {
+      "code": "pl_bEdO4JKX8YW2ENUo3FyywzegL5GkjmQ3"
+    },
+    "ip": "189.38.99.85",
+    "items": [
+      {
+        "amount": 29700,
+        "code": "item_qOrXb6Me1JGNRjzSL8S1Nzlv8R2oWAVp",
+        "created_at": "2026-05-08T18:12:58",
+        "description": "Plano Start Teste",
+        "id": "oi_WbO2wXETGClr7B9a",
+        "quantity": 1,
+        "status": "active",
+        "type": "product",
+        "updated_at": "2026-05-08T18:12:58"
+      }
+    ],
+    "metadata": {
+      "payment_link_id": "pl_bEdO4JKX8YW2ENUo3FyywzegL5GkjmQ3",
+      "session_id": "session_Emg0dNornlZ5LwbFaTK198BjRx7QDK2W"
+    },
+    "session_id": "a6740f32-a4fd-41a1-8ef0-90676a3520ce",
+    "status": "paid",
+    "updated_at": "2026-05-08T18:12:59"
+  }
+}

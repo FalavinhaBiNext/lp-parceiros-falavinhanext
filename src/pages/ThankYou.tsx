@@ -15,7 +15,7 @@ const ThankYou = () => {
     TagManager.dataLayer({
       dataLayer: {
         event: "page_view",
-        page: "/agradecimento",
+        page: "/agradecimento-parceiro",
       },
     });
 

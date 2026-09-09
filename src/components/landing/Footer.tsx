@@ -1,5 +1,4 @@
-import { motion } from "framer-motion";
-import { Linkedin, Instagram, Facebook, Mail, Phone, MapPin } from "lucide-react";
+
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();

@@ -31,7 +31,7 @@ const PartnerForm = () => {
   };
 
   const gotToAgradecimento = () => {
-    navigate("/obrigado");
+    navigate("/agradecimento-parceiro");
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -48,17 +48,17 @@ const PartnerForm = () => {
         utm_term: new URLSearchParams(window.location.search).get('utm_term') || 'Não Informado',
       };
 
-      const apiFalavinhaProducao = 'https://api.falavinha.com.br/api/v1/leads/create';
-      const webhookProducao = 'https://falavinha.app.n8n.cloud/webhook/tributario';
+      const apiFalavinhaProducao = 'https://tributario.falavinhanext.com.br/api/api/v1/leads/create';
+      const webhookProducao = 'https://n8nbot.falavinhanext.com.br/webhook/tributario';
 
-      const response = await axios.post('https://tributario.falavinhanext.com.br/api/api/v1/leads/create', newData);
+      const response = await axios.post(apiFalavinhaProducao, newData);
       console.log(response, "RESPONSE");
       
-      // await axios.post(webhookProducao, newData, {
-      //   headers: {
-      //     "Content-Type": "multipart/form-data",
-      //   },
-      // });
+      await axios.post(webhookProducao, newData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
 
       toast.success("Cadastro realizado com sucesso!");
       setFormData({
